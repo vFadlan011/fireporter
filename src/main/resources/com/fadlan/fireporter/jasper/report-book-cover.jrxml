@@ -1,0 +1,48 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="report_book_cover" language="java" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="c50b24eb-eb33-413f-8e75-e7e20a5341fd">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="REPORT_TITLE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Report Book Template"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="THEME_COVER" class="java.awt.image.BufferedImage"/>
+	<parameter name="THEME_COLOR" class="java.lang.String"/>
+	<parameter name="THEME_DARK_COLOR" class="java.lang.String"/>
+	<group name="Cover" resetPageNumber="true">
+		<groupHeader>
+			<band height="842">
+				<element kind="image" uuid="5f944e86-f617-4f19-adad-56fcd5779a35" x="0" y="0" width="595" height="842" scaleImage="FillFrame" onErrorType="Blank" hImageAlign="Center" vImageAlign="Middle">
+					<expression><![CDATA[$P{THEME_COVER}]]></expression>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</element>
+				<element kind="rectangle" uuid="af18a3e2-be74-4758-8b30-a44b104663e5" mode="Opaque" x="-10" y="640" width="249" height="80">
+					<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_COLOR}]]></propertyExpression>
+					<pen lineWidth="0.0"/>
+				</element>
+				<element kind="textField" uuid="5bb49d37-ea51-4ca3-a18a-38cb0e66e0ee" positionType="Float" mode="Opaque" x="230" y="630" width="370" height="64" forecolor="#FFFFFF" backcolor="#911411" fontName="Montserrat" fontSize="45.0" linkType="None" linkTarget="Self" underline="false" italic="false" bold="false" hTextAlign="Left" vTextAlign="Bottom">
+					<expression><![CDATA[$P{REPORT_TITLE}]]></expression>
+					<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
+					<box leftPadding="20" rightPadding="20"/>
+				</element>
+				<element kind="textField" uuid="7f58d454-cae0-4ebb-9ccd-c885124eb525" positionType="Float" mode="Opaque" x="230" y="694" width="370" height="36" forecolor="#FFFFFF" backcolor="#911411" fontName="Montserrat" fontSize="20.0" hTextAlign="Left" vTextAlign="Top">
+					<expression><![CDATA["Financial Report"]]></expression>
+					<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
+					<box leftPadding="20" rightPadding="20"/>
+				</element>
+				<element kind="textField" uuid="38fc9afd-edcb-42f3-b6bc-cd258f6507b3" x="250" y="730" width="234" height="20" fontName="Roboto" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+					<expression><![CDATA["Printed on " + DATEFORMAT(TODAY( ),"E MMM d, yyyy")]]></expression>
+					<propertyExpression name="net.sf.jasperreports.style.forecolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
+				</element>
+			</band>
+		</groupHeader>
+	</group>
+</jasperReport>

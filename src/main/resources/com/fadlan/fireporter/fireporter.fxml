@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="560.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fadlan.fireporter.controller.FireporterController">
+   <children>
+      <VBox fx:id="vBoxBase" onMouseDragged="#onMouseDragged" onMousePressed="#onMousePressed" prefHeight="561.0" prefWidth="536.0" style="-fx-background-color: white; -fx-background-radius: 12px;">
+         <children>
+            <HBox alignment="BASELINE_LEFT" prefHeight="34.0" prefWidth="492.0" spacing="8.0">
+               <children>
+                  <Label text="Fireporter">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="v0.33.0" textFill="#8d8d8d" />
+                  <Button fx:id="aboutBtn" mnemonicParsing="false" onAction="#aboutBtnOnAction" style="-fx-cursor: hand;" text="?">
+                     <styleClass>
+                        <String fx:value="flat" />
+                        <String fx:value="rounded" />
+                        <String fx:value="accent" />
+                     </styleClass>
+                  </Button>
+                  <Pane prefHeight="26.0" prefWidth="245.0" />
+                  <Button fx:id="closeBtn" mnemonicParsing="false" onAction="#onCloseBtnClick" style="-fx-cursor: hand;" text="X">
+                     <styleClass>
+                        <String fx:value="rounded" />
+                        <String fx:value="danger" />
+                        <String fx:value="flat" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <Label text="Host" />
+            <HBox alignment="CENTER" prefHeight="24.0" prefWidth="488.0" spacing="16.0">
+               <children>
+                  <ComboBox fx:id="hostProtocolComboBox" prefHeight="36.0" prefWidth="108.0" />
+                  <TextField fx:id="hostTextField" prefHeight="36.0" prefWidth="385.0" promptText="localhost:2045" text="localhost" />
+               </children>
+            </HBox>
+            <Label text="Token">
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+            </Label>
+            <TextArea fx:id="tokenTextArea" prefHeight="70.0" prefWidth="492.0" promptText="api token" wrapText="true" />
+            <Label fx:id="testConnectionBtn" onMouseClicked="#testConnectionOnClick" style="-fx-cursor: hand;" text="Test Connection" textFill="#335acd" underline="true">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label text="Period">
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+            </Label>
+            <HBox prefHeight="16.0" prefWidth="488.0">
+               <children>
+                  <ComboBox fx:id="periodComboBox" prefHeight="36.0" prefWidth="343.0" promptText="Select Period" />
+                  <Pane prefHeight="36.0" prefWidth="24.0" />
+                  <ComboBox fx:id="yearComboBox" prefWidth="150.0" promptText="Select Year" />
+               </children>
+            </HBox>
+            <Label text="Theme">
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+            </Label>
+            <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="492.0" spacing="12.0">
+               <children>
+                  <Button fx:id="plainThemeBtn" mnemonicParsing="false" onAction="#themeButtonOnClick" prefHeight="36.0" prefWidth="35.0" style="-fx-background-color: #122140; -fx-cursor: hand;" text="X" textFill="WHITE" />
+                  <Button fx:id="yellowThemeBtn" mnemonicParsing="false" onAction="#themeButtonOnClick" prefHeight="36.0" prefWidth="35.0" style="-fx-background-color: #ffb217; -fx-cursor: hand;" />
+                  <Button fx:id="greenThemeBtn" mnemonicParsing="false" onAction="#themeButtonOnClick" prefHeight="36.0" prefWidth="35.0" style="-fx-background-color: #50ee48; -fx-cursor: hand;" />
+                  <Button fx:id="cyanThemeBtn" mnemonicParsing="false" onAction="#themeButtonOnClick" prefHeight="36.0" prefWidth="35.0" style="-fx-background-color: #24edd9; -fx-cursor: hand;" />
+                  <Button fx:id="blueThemeBtn" mnemonicParsing="false" onAction="#themeButtonOnClick" prefHeight="36.0" prefWidth="35.0" style="-fx-background-color: #1774ff; -fx-cursor: hand;" textFill="WHITE" />
+                  <Button fx:id="purpleThemeBtn" mnemonicParsing="false" onAction="#themeButtonOnClick" prefHeight="36.0" prefWidth="35.0" style="-fx-background-color: #b35ce2; -fx-cursor: hand;" textFill="WHITE" />
+                  <Button fx:id="redThemeBtn" mnemonicParsing="false" onAction="#themeButtonOnClick" prefHeight="36.0" prefWidth="35.0" style="-fx-background-color: #e51339; -fx-cursor: hand;" textFill="WHITE" />
+
+               </children>
+            </HBox>
+            <Button fx:id="generateBtn" defaultButton="true" mnemonicParsing="false" onAction="#generateBtnOnAction" prefHeight="36.0" prefWidth="598.0" style="-fx-cursor: hand;" text="Generate">
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="button_outlined" />
+                  <String fx:value="accent" />
+               </styleClass>
+            </Button>
+            <Button fx:id="cancelBtn" disable="true" mnemonicParsing="false" onAction="#cancelBtnOnAction" prefHeight="36.0" prefWidth="598.0" style="-fx-cursor: hand;" text="Cancel">
+               <styleClass>
+                  <String fx:value="button_outlined" />
+                  <String fx:value="danger" />
+               </styleClass>
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+            </Button>
+            <Separator prefHeight="0.0" prefWidth="488.0" />
+            <Label fx:id="statusLabel" />
+            <ProgressBar fx:id="progressBar" prefHeight="19.0" prefWidth="488.0" progress="0.58" />
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+         </padding>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+   </padding>
+</VBox>

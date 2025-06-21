@@ -1,0 +1,144 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.jetbrains.kotlin.jvm' version '2.1.0'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
+    id 'org.beryx.jlink' version '2.25.0'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '2.1.0'
+}
+
+group = 'com.fadlan'
+version = '0.33.0'
+
+repositories {
+    mavenCentral()
+    maven { url = "https://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/" }
+}
+
+ext {
+    junitVersion = '5.10.0'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+application {
+//    mainModule = 'com.fadlan.fireporter'
+    mainClass = 'com.fadlan.fireporter.FireporterApp'
+    applicationDefaultJvmArgs = [
+            '--add-opens=java.base/java.lang=ALL-UNNAMED',
+            "--add-opens=java.base/java.lang.reflect=ALL-UNNAMED",
+            '--add-opens=java.base/java.util=ALL-UNNAMED',
+            "--add-opens=java.desktop/java.awt=ALL-UNNAMED",
+            "--add-opens=java.desktop/sun.awt=ALL-UNNAMED",
+            "--add-opens=javafx.controls/com.sun.javafx.scene.control.skin=ALL-UNNAMED",
+            "--add-opens=javafx.graphics/com.sun.javafx.scene=ALL-UNNAMED",
+            "--add-opens=javafx.controls/com.sun.javafx.scene.control.skin=ALL-UNNAMED",
+            "--add-opens=javafx.fxml/javafx.fxml=ALL-UNNAMED",
+    ]
+}
+
+kotlin {
+    jvmToolchain(17)
+}
+
+javafx {
+    version = '22-ea+11'
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
+dependencies {
+    runtimeOnly files('lib/jetbrains-mono-font-ext.jar')
+    runtimeOnly files('lib/montserrat-font-ext.jar')
+    runtimeOnly files('lib/roboto-font-ext.jar')
+
+    implementation("org.codehaus.groovy:groovy:3.0.9")
+//    implementation("com.gradle:gradle-enterprise-gradle-plugin:3.13.4")
+
+    testImplementation("io.kotest:kotest-runner-junit5:5.9.0")
+    testImplementation("io.kotest:kotest-assertions-core:5.9.0")
+    testImplementation("io.kotest:kotest-framework-engine:5.9.0")
+
+    implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.0.3"))
+    implementation("io.insert-koin:koin-core")
+
+    implementation("org.slf4j:slf4j-simple:2.0.13")
+
+    implementation 'io.github.mkpaz:atlantafx-base:2.0.0'
+
+    implementation("io.ktor:ktor-client-cio:3.1.3")
+    implementation("io.ktor:ktor-client-content-negotiation:3.1.3")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:3.1.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-javafx:1.8.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
+
+    implementation("org.apache.pdfbox:pdfbox:3.0.5")
+    implementation("org.apache.pdfbox:pdfbox-tools:3.0.5")
+    implementation("org.apache.pdfbox:jbig2-imageio:3.0.4")
+
+    implementation("commons-logging:commons-logging:1.2") {
+        exclude group: "org.bouncycastle"
+    }
+
+    implementation("net.sf.jasperreports:jasperreports:7.0.2")
+    implementation("net.sf.jasperreports:jasperreports-functions:7.0.2")
+    implementation("net.sf.jasperreports:jasperreports-fonts:7.0.2")
+    implementation("net.sf.jasperreports:jasperreports-pdf:7.0.2")
+    implementation("net.sf.jasperreports:jasperreports-excel-poi:7.0.2")
+    implementation("net.sf.jasperreports:jasperreports-chart-themes:7.0.2")
+    implementation("net.sf.jasperreports:jasperreports-charts:7.0.2")
+    implementation("net.sf.jasperreports:jasperreports-chart-customizers:7.0.2")
+    implementation("net.sf.jasperreports:jasperreports-groovy:7.0.2")
+
+    implementation("com.github.librepdf:openpdf:2.0.5")
+    implementation("com.fasterxml.jackson.core:jackson-core:2.19.0")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.19.0")
+}
+
+configurations.configureEach {
+    exclude group: "org.bouncycastle", module: "bcprov-jdk14"
+    exclude group: 'xml-apis', module: 'xml-apis'
+    exclude group: "org.springframework", module: "spring-jcl"
+    resolutionStrategy.eachDependency {
+        if (requested.group == "org.codehaus.groovy") {
+            useTarget("org.apache.groovy:${requested.name}:${requested.version}")
+            because("Avoid conflicts between org.codehaus.groovy and org.apache.groovy")
+        }
+    }
+}
+
+sourceSets {
+    main {
+        java.srcDirs("src/main/kotlin")
+        resources.srcDirs("src/main/resources")
+    }
+    test {
+        java.srcDirs("src/test/kotlin")
+        resources.srcDirs("src/test/resources")
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
+
+tasks.processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+jlink {
+    imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+    launcher {
+        name = 'app'
+    }
+}
+
+jlinkZip {
+    group = 'distribution'
+}

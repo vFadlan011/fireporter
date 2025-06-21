@@ -1,0 +1,98 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="Empty_Book" language="java" pageWidth="595" pageHeight="842" sectionType="Part" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" uuid="d2716064-8ae4-40cf-a575-33afba400e3a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="net.sf.jasperreports.print.create.bookmarks" value="true"/>
+	<parameter name="REPORT_TITLE" class="java.lang.String"/>
+	<parameter name="THEME_COLOR" class="java.lang.String"/>
+	<parameter name="THEME_DARK_COLOR" class="java.lang.String"/>
+	<parameter name="CURRENCY_CODE" class="java.lang.String"/>
+	<parameter name="CURRENCY_SYMBOL" class="java.lang.String"/>
+	<parameter name="CURRENCY_DECIMAL_PLACES" class="java.lang.Integer"/>
+	<parameter name="COVER_REPORT" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="THEME_COVER" class="java.awt.image.BufferedImage"/>
+	<parameter name="SUMMARY_REPORT" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="GENERAL_OVERVIEW" class="com.fadlan.fireporter.model.GeneralOverview"/>
+	<parameter name="ASSET_ACCOUNTS" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="SUMMARY_CHART_DATASET" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="DATE_RANGE" class="com.fadlan.fireporter.model.DateRangeBoundaries"/>
+	<parameter name="INCOME_INSIGHT" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="EXPENSE_INSIGHT" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="DISCLAIMER_REPORT" class="net.sf.jasperreports.engine.JasperReport"/>
+	<detail>
+		<part uuid="92934ce7-d1f5-43f5-9f9f-005b31686f81">
+			<component kind="subreportPart">
+				<expression><![CDATA[$P{COVER_REPORT}]]></expression>
+				<parameter name="REPORT_CONNECTION">
+					<expression><![CDATA[$P{REPORT_CONNECTION}]]></expression>
+				</parameter>
+				<parameter name="REPORT_TITLE">
+					<expression><![CDATA[$P{REPORT_TITLE}]]></expression>
+				</parameter>
+				<parameter name="THEME_COLOR">
+					<expression><![CDATA[$P{THEME_COLOR}]]></expression>
+				</parameter>
+				<parameter name="THEME_DARK_COLOR">
+					<expression><![CDATA[$P{THEME_DARK_COLOR}]]></expression>
+				</parameter>
+				<parameter name="THEME_COVER">
+					<expression><![CDATA[$P{THEME_COVER}]]></expression>
+				</parameter>
+			</component>
+		</part>
+		<part uuid="b603afef-50ac-4c09-91b0-9725b369d9e9">
+			<component kind="subreportPart">
+				<expression><![CDATA[$P{SUMMARY_REPORT}]]></expression>
+				<parameter name="REPORT_DATA_SOURCE">
+					<expression><![CDATA[$P{SUMMARY_CHART_DATASET}]]></expression>
+				</parameter>
+				<parameter name="THEME_DARK_COLOR">
+					<expression><![CDATA[$P{THEME_DARK_COLOR}]]></expression>
+				</parameter>
+				<parameter name="THEME_COLOR">
+					<expression><![CDATA[$P{THEME_COLOR}]]></expression>
+				</parameter>
+				<parameter name="CURRENCY_CODE">
+					<expression><![CDATA[$P{CURRENCY_CODE}]]></expression>
+				</parameter>
+				<parameter name="CURRENCY_SYMBOL">
+					<expression><![CDATA[$P{CURRENCY_SYMBOL}]]></expression>
+				</parameter>
+				<parameter name="CURRENCY_DECIMAL_PLACES">
+					<expression><![CDATA[$P{CURRENCY_DECIMAL_PLACES}]]></expression>
+				</parameter>
+				<parameter name="GENERAL_OVERVIEW">
+					<expression><![CDATA[$P{GENERAL_OVERVIEW}]]></expression>
+				</parameter>
+				<parameter name="DATE_RANGE">
+					<expression><![CDATA[$P{DATE_RANGE}]]></expression>
+				</parameter>
+				<parameter name="ASSET_ACCOUNTS">
+					<expression><![CDATA[$P{ASSET_ACCOUNTS}]]></expression>
+				</parameter>
+				<parameter name="INCOME_INSIGHT">
+					<expression><![CDATA[$P{INCOME_INSIGHT}]]></expression>
+				</parameter>
+				<parameter name="EXPENSE_INSIGHT">
+					<expression><![CDATA[$P{EXPENSE_INSIGHT}]]></expression>
+				</parameter>
+			</component>
+		</part>
+		<part uuid="91e13196-488e-47db-92bb-75199600a420">
+			<component kind="subreportPart">
+				<expression><![CDATA[$P{DISCLAIMER_REPORT}]]></expression>
+				<parameter name="REPORT_DATA_SOURCE">
+					<expression><![CDATA[$P{SUMMARY_CHART_DATASET}]]></expression>
+				</parameter>
+				<parameter name="THEME_DARK_COLOR">
+					<expression><![CDATA[$P{THEME_DARK_COLOR}]]></expression>
+				</parameter>
+				<parameter name="THEME_COLOR">
+					<expression><![CDATA[$P{THEME_COLOR}]]></expression>
+				</parameter>
+				<parameter name="CURRENCY_CODE">
+					<expression><![CDATA[$P{CURRENCY_CODE}]]></expression>
+				</parameter>
+			</component>
+		</part>
+	</detail>
+</jasperReport>
