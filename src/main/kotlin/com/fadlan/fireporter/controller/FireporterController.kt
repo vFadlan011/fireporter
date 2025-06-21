@@ -28,6 +28,15 @@ class FireporterController(
     private val controllerScope = CoroutineScope(Dispatchers.Main)
     private var job: Job? = null
     private val icon: Image = Image(FireporterApp::class.java.getResourceAsStream("fireporter-icon.png"))
+    private val version: String = object {}.javaClass
+        .getResourceAsStream("/version.properties")
+        ?.use { stream ->
+            java.util.Properties().apply { load(stream) }
+        }?.getProperty("app.version") ?: "Unknown"
+
+    @FXML
+    private lateinit var versionLabel: Label
+
     @FXML
     fun initialize() {
         setupYearComboBox()
@@ -44,6 +53,7 @@ class FireporterController(
         statusLabel.textProperty().bind(progressTracker.messageProperty)
 
         hostTextField.text = "localhost:777"
+        versionLabel.text = "v$version"
     }
 
     private var x: Double = 0.0

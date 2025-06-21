@@ -8,7 +8,7 @@ plugins {
 }
 
 group = 'com.fadlan'
-version = '0.33.0'
+version = '0.34.0'
 
 repositories {
     mavenCentral()
@@ -54,7 +54,6 @@ dependencies {
     runtimeOnly files('lib/roboto-font-ext.jar')
 
     implementation("org.codehaus.groovy:groovy:3.0.9")
-//    implementation("com.gradle:gradle-enterprise-gradle-plugin:3.13.4")
 
     testImplementation("io.kotest:kotest-runner-junit5:5.9.0")
     testImplementation("io.kotest:kotest-assertions-core:5.9.0")
@@ -129,6 +128,12 @@ tasks.test {
 
 tasks.processResources {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+processResources {
+    filesMatching('**/version.properties') {
+        expand(version: project.version)
+    }
 }
 
 jlink {

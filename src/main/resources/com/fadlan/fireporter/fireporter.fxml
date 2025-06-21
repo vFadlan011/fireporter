@@ -25,7 +25,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label text="v0.33.0" textFill="#8d8d8d" />
+                  <Label fx:id="versionLabel" text="v0.33.0" textFill="#8d8d8d" />
                   <Button fx:id="aboutBtn" mnemonicParsing="false" onAction="#aboutBtnOnAction" style="-fx-cursor: hand;" text="?">
                      <styleClass>
                         <String fx:value="flat" />
