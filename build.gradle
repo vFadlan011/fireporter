@@ -8,7 +8,7 @@ plugins {
 }
 
 group = 'com.fadlan'
-version = '0.34.0'
+version = '0.34.1'
 
 repositories {
     mavenCentral()
@@ -100,7 +100,7 @@ configurations.configureEach {
     exclude group: 'xml-apis', module: 'xml-apis'
     exclude group: "org.springframework", module: "spring-jcl"
     resolutionStrategy.eachDependency {
-        if (requested.group == "org.codehaus.groovy") {
+        if (requested.group.equals("org.codehaus.groovy")) {
             useTarget("org.apache.groovy:${requested.name}:${requested.version}")
             because("Avoid conflicts between org.codehaus.groovy and org.apache.groovy")
         }

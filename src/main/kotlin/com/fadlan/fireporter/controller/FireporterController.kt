@@ -120,7 +120,7 @@ class FireporterController(
             Alert.AlertType.INFORMATION,
             "About Fireporter",
             "Fireporter: Firefly III PDF Report Generator",
-            "Version 0.1 Beta",
+            "Fireporter Version $version\nCompatible with Firefly III v6.x.x\nGithub: vFadlan011/fireporter",
         )
 
         val iconView = ImageView(icon)
