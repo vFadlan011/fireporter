@@ -17,6 +17,8 @@
 	<parameter name="DATE_RANGE" class="com.fadlan.fireporter.model.DateRangeBoundaries"/>
 	<parameter name="INCOME_INSIGHT" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<parameter name="EXPENSE_INSIGHT" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="TRANSACTION_REPORT" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="TRANSACTION_HISTORY_DATASET" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<parameter name="DISCLAIMER_REPORT" class="net.sf.jasperreports.engine.JasperReport"/>
 	<detail>
 		<part uuid="92934ce7-d1f5-43f5-9f9f-005b31686f81">
@@ -77,12 +79,38 @@
 				</parameter>
 			</component>
 		</part>
+		<part uuid="a603afef-50ac-4c09-91b0-9725b693d9e3">
+			<component kind="subreportPart">
+				<expression><![CDATA[$P{TRANSACTION_REPORT}]]></expression>
+				<parameter name="TRANSACTION_HISTORY_DATASET">
+					<expression><![CDATA[$P{TRANSACTION_HISTORY_DATASET}]]></expression>
+				</parameter>
+				<parameter name="THEME_DARK_COLOR">
+					<expression><![CDATA[$P{THEME_DARK_COLOR}]]></expression>
+				</parameter>
+				<parameter name="THEME_COLOR">
+					<expression><![CDATA[$P{THEME_COLOR}]]></expression>
+				</parameter>
+				<parameter name="CURRENCY_CODE">
+					<expression><![CDATA[$P{CURRENCY_CODE}]]></expression>
+				</parameter>
+				<parameter name="CURRENCY_SYMBOL">
+					<expression><![CDATA[$P{CURRENCY_SYMBOL}]]></expression>
+				</parameter>
+				<parameter name="CURRENCY_DECIMAL_PLACES">
+					<expression><![CDATA[$P{CURRENCY_DECIMAL_PLACES}]]></expression>
+				</parameter>
+				<parameter name="GENERAL_OVERVIEW">
+					<expression><![CDATA[$P{GENERAL_OVERVIEW}]]></expression>
+				</parameter>
+				<parameter name="DATE_RANGE">
+					<expression><![CDATA[$P{DATE_RANGE}]]></expression>
+				</parameter>
+			</component>
+		</part>
 		<part uuid="91e13196-488e-47db-92bb-75199600a420">
 			<component kind="subreportPart">
 				<expression><![CDATA[$P{DISCLAIMER_REPORT}]]></expression>
-				<parameter name="REPORT_DATA_SOURCE">
-					<expression><![CDATA[$P{SUMMARY_CHART_DATASET}]]></expression>
-				</parameter>
 				<parameter name="THEME_DARK_COLOR">
 					<expression><![CDATA[$P{THEME_DARK_COLOR}]]></expression>
 				</parameter>

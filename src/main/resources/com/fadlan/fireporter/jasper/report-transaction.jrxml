@@ -1,0 +1,169 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="report-disclaimer" language="java" columnCount="1" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="770" leftMargin="36" rightMargin="36" topMargin="36" bottomMargin="36" uuid="c9905cbf-9074-4da4-a3f8-d6b8854cd232">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<dataset name="TRANSACTION_HISTORY" uuid="12cc3934-6a8e-4268-a096-afddae6c6d9e">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<parameter name="CURRENCY_DECIMAL_PLACES" class="java.lang.Integer"/>
+		<query language="sql"><![CDATA[]]></query>
+		<field name="transactionJournalId" class="java.lang.String"/>
+		<field name="type" class="java.lang.String"/>
+		<field name="datetime" class="java.time.ZonedDateTime"/>
+		<field name="order" class="java.lang.Integer"/>
+		<field name="currencyCode" class="java.lang.String"/>
+		<field name="currencySymbol" class="java.lang.String"/>
+		<field name="amount" class="java.math.BigDecimal"/>
+		<field name="description" class="java.lang.String"/>
+		<field name="sourceId" class="java.lang.String"/>
+		<field name="sourceName" class="java.lang.String"/>
+		<field name="sourceType" class="java.lang.String"/>
+		<field name="destinationId" class="java.lang.String"/>
+		<field name="destinationName" class="java.lang.String"/>
+		<field name="destinationType" class="java.lang.String"/>
+		<field name="budgetId" class="java.lang.String"/>
+		<field name="budgetName" class="java.lang.String"/>
+		<field name="categoryId" class="java.lang.String"/>
+		<field name="categoryName" class="java.lang.String"/>
+		<field name="billId" class="java.lang.String"/>
+		<field name="billName" class="java.lang.String"/>
+		<field name="hasAttachments" class="java.lang.Boolean"/>
+		<field name="balanceLeft" class="java.math.BigDecimal"/>
+		<field name="elementId" class="java.lang.String"/>
+		<field name="firstAttachmentElementId" class="java.lang.String"/>
+	</dataset>
+	<parameter name="THEME_DARK_COLOR" class="java.lang.String"/>
+	<parameter name="THEME_COLOR" class="java.lang.String"/>
+	<parameter name="CURRENCY_CODE" class="java.lang.String"/>
+	<parameter name="CURRENCY_SYMBOL" class="java.lang.String"/>
+	<parameter name="CURRENCY_DECIMAL_PLACES" class="java.lang.Integer"/>
+	<parameter name="DATE_RANGE" class="com.fadlan.fireporter.model.DateRangeBoundaries"/>
+	<parameter name="TRANSACTION_HISTORY_DATASET" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<group name="Transactions">
+		<groupHeader>
+			<band height="60">
+				<element kind="component" uuid="71cc1462-380f-457b-b2a6-283e5e7de782" x="0" y="0" width="770" height="40">
+					<component kind="list">
+						<datasetRun uuid="6a0cdb3b-2c0d-4def-b12e-bc660e640955" subDataset="TRANSACTION_HISTORY">
+							<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+							<dataSourceExpression><![CDATA[$P{TRANSACTION_HISTORY_DATASET}]]></dataSourceExpression>
+						</datasetRun>
+						<contents height="40" width="770">
+							<element kind="textField" uuid="40482f68-648f-42df-9e26-40f937d8a954" x="0" y="0" width="80" height="40" markup="html" fontName="Roboto" linkType="None" linkTarget="Self" vTextAlign="Middle">
+								<paragraph leftIndent="8"/>
+								<expression><![CDATA[com.fadlan.fireporter.utils.ReportUtils.formatDate($F{datetime}.toLocalDate()) + "\n" + com.fadlan.fireporter.utils.ReportUtils.formatTime($F{datetime}.toLocalTime())]]></expression>
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</element>
+							<element kind="textField" uuid="43c3d584-8b67-421a-82bb-30d9733f4653" x="80" y="0" width="220" height="40" markup="html" fontName="Roboto" textAdjust="StretchHeight" linkType="None" linkTarget="Self" vTextAlign="Middle">
+								<paragraph leftIndent="8"/>
+								<expression><![CDATA[$F{description}]]></expression>
+								<anchorNameExpression><![CDATA[$F{elementId}]]></anchorNameExpression>
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</element>
+							<element kind="textField" uuid="7bd7475b-9f76-4309-901c-4b9dbf1f5a4c" x="300" y="0" width="90" height="40" markup="html" fontName="Roboto" vTextAlign="Middle">
+								<paragraph leftIndent="8"/>
+								<expression><![CDATA[$F{sourceName}]]></expression>
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</element>
+							<element kind="textField" uuid="5d807ddf-c941-4d1b-bf91-a1df136da2ca" x="390" y="0" width="90" height="40" markup="html" fontName="Roboto" vTextAlign="Middle">
+								<paragraph leftIndent="8"/>
+								<expression><![CDATA[$F{destinationName}]]></expression>
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+							</element>
+							<element kind="textField" uuid="bf180fe2-be76-433e-9837-181c3dd831fc" x="480" y="0" width="120" height="40" markup="html" fontName="Jetbrains Mono" hTextAlign="Right" vTextAlign="Middle">
+								<paragraph leftIndent="0" rightIndent="8"/>
+								<expression><![CDATA[com.fadlan.fireporter.utils.ReportUtils.formatCurrency($F{currencySymbol}, $F{amount}, $P{CURRENCY_DECIMAL_PLACES})]]></expression>
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+								<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+							</element>
+							<element kind="textField" uuid="756a4678-9740-4a67-96ab-d5d34c366225" x="600" y="0" width="120" height="40" markup="html" fontName="Jetbrains Mono" hTextAlign="Right" vTextAlign="Middle">
+								<paragraph leftIndent="0" rightIndent="8"/>
+								<expression><![CDATA[com.fadlan.fireporter.utils.ReportUtils.formatCurrency($F{currencySymbol}, $F{balanceLeft}, $P{CURRENCY_DECIMAL_PLACES})]]></expression>
+								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+								<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+							</element>
+							<element kind="textField" uuid="78cde228-b3e8-443d-9e76-32c239466d87" x="720" y="0" width="50" height="40" markup="html" fontName="Roboto" evaluationTime="Master" linkType="LocalAnchor" linkTarget="Self" blankWhenNull="true" hTextAlign="Center" vTextAlign="Middle">
+								<paragraph leftIndent="8"/>
+								<expression><![CDATA["View"]]></expression>
+								<anchorNameExpression><![CDATA[$F{elementId}]]></anchorNameExpression>
+								<hyperlinkWhenExpression><![CDATA[$F{hasAttachments}]]></hyperlinkWhenExpression>
+								<hyperlinkAnchorExpression><![CDATA[$F{firstAttachmentElementId}]]></hyperlinkAnchorExpression>
+							</element>
+						</contents>
+					</component>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</element>
+			</band>
+		</groupHeader>
+	</group>
+	<title height="60" splitType="Stretch">
+		<element kind="staticText" uuid="ad00681d-cda2-416d-84e2-1f354ad00e81" mode="Transparent" x="50" y="0" width="240" height="40" forecolor="#030303" backcolor="#AB3A38" fontName="Montserrat" fontSize="22.0" bold="false" italic="false" hTextAlign="Left" vTextAlign="Middle">
+			<paragraph leftIndent="8"/>
+			<text><![CDATA[Transaction History]]></text>
+			<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
+		</element>
+		<element kind="staticText" uuid="f88af4e1-bb17-4370-b61d-f0394fcacacf" mode="Opaque" x="0" y="0" width="40" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Montserrat" fontSize="22.0" bold="false" italic="false" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[3]]></text>
+			<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</title>
+	<pageHeader height="40">
+		<element kind="staticText" uuid="0c493a2f-61c3-4384-8a80-2015e1e22c9f" mode="Opaque" x="390" y="0" width="90" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Roboto" fontSize="10.0" bold="false" italic="false" hTextAlign="Left" vTextAlign="Middle">
+			<paragraph leftIndent="8"/>
+			<text><![CDATA[Destination]]></text>
+			<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
+		</element>
+		<element kind="staticText" uuid="c08645d7-9b43-4ba6-be5c-e1e89fe833ec" mode="Opaque" x="720" y="0" width="50" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Roboto" fontSize="10.0" bold="false" italic="false" hTextAlign="Center" vTextAlign="Middle">
+			<paragraph leftIndent="8"/>
+			<text><![CDATA[Att.]]></text>
+			<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
+		</element>
+		<element kind="staticText" uuid="d4d8c736-bd50-4caa-9ef5-6fed1fbc6dca" mode="Opaque" x="300" y="0" width="90" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Roboto" fontSize="10.0" bold="false" italic="false" hTextAlign="Left" vTextAlign="Middle">
+			<paragraph leftIndent="8"/>
+			<text><![CDATA[Source]]></text>
+			<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
+		</element>
+		<element kind="staticText" uuid="024e5107-70e6-453d-b98a-a8849c23076f" mode="Opaque" x="80" y="0" width="220" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Roboto" fontSize="10.0" bold="false" italic="false" hTextAlign="Left" vTextAlign="Middle">
+			<paragraph leftIndent="8"/>
+			<text><![CDATA[Description]]></text>
+			<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
+		</element>
+		<element kind="staticText" uuid="1500ec1d-05bc-4a12-84fb-a7503c7c423e" mode="Opaque" x="480" y="0" width="120" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Roboto" fontSize="10.0" bold="false" italic="false" hTextAlign="Left" vTextAlign="Middle">
+			<paragraph leftIndent="8"/>
+			<text><![CDATA[Amount]]></text>
+			<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
+		</element>
+		<element kind="staticText" uuid="d6775780-7a2d-4c85-8c32-863daa3a7b02" mode="Opaque" x="600" y="0" width="120" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Roboto" fontSize="10.0" bold="false" italic="false" hTextAlign="Left" vTextAlign="Middle">
+			<paragraph leftIndent="8"/>
+			<text><![CDATA[Balance Left]]></text>
+			<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
+		</element>
+		<element kind="staticText" uuid="37c0c9ac-8310-4ff5-befe-b7634913923d" mode="Opaque" x="0" y="0" width="80" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Roboto" fontSize="10.0" bold="false" italic="false" hTextAlign="Left" vTextAlign="Middle">
+			<paragraph leftIndent="8"/>
+			<text><![CDATA[Date & Time]]></text>
+			<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+			<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</pageHeader>
+	<pageFooter height="40" splitType="Stretch">
+		<element kind="textField" uuid="63a64fb3-181f-4f40-b796-a3b19331707e" x="650" y="0" width="120" height="40" fontName="Montserrat" evaluationTime="Master" italic="true" hTextAlign="Right" vTextAlign="Middle">
+			<expression><![CDATA["Page " + ($V{MASTER_CURRENT_PAGE} - 1) + " / " + ($V{MASTER_TOTAL_PAGES} - 1)]]></expression>
+		</element>
+		<property name="com.jaspersoft.studio.unit.height" value="px"/>
+	</pageFooter>
+</jasperReport>

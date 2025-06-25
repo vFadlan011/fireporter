@@ -14,8 +14,7 @@ import io.ktor.client.statement.*
 import io.ktor.http.*
 import java.math.BigDecimal
 import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.ZoneOffset
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 class TransactionRepository(
@@ -51,7 +50,7 @@ class TransactionRepository(
             transactions += fetchSinglePageTransactions(currentPage, dateRange).data
         }
 
-        transactions.sortBy { it.attributes.createdAt }
+        transactions.sortBy { it.attributes.transactions.first().date }
         return transactions
     }
 
@@ -95,9 +94,10 @@ class TransactionRepository(
                     else -> currentBalance
                 }
 
-                val datetime = LocalDateTime.parse(journal.date, textDateFormat)
-                val epochTime = datetime.toEpochSecond(ZoneOffset.UTC)
+                val datetime = ZonedDateTime.parse(journal.date)
+                val epochTime = datetime.toEpochSecond()
                 val journalElementId = "$epochTime-${journal.transactionJournalId}"
+                var firstAttachmentElementId: String? = null
 
                 val journalAttachment = mutableListOf<Attachment>()
                 val iterator = attachments.iterator()
@@ -108,6 +108,7 @@ class TransactionRepository(
                         attachment.parentId = journalElementId
 
                         journalAttachment += attachment
+                        if (firstAttachmentElementId.isNullOrBlank()) firstAttachmentElementId = attachment.elementId
                         iterator.remove()
                     }
                 }
@@ -138,7 +139,8 @@ class TransactionRepository(
                         journal.hasAttachments,
                         journalAttachment,
                         currentBalance,
-                        journalElementId
+                        journalElementId,
+                        firstAttachmentElementId
                     )
                 )
             }

@@ -4,7 +4,6 @@ import com.fadlan.fireporter.FireporterApp
 import com.fadlan.fireporter.model.ChartEntry
 import com.fadlan.fireporter.model.ReportData
 import com.fadlan.fireporter.model.Theme
-import com.fadlan.fireporter.utils.prettyPrint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import net.sf.jasperreports.engine.*
@@ -27,6 +26,7 @@ class JasperReportService {
     private val jrxmlFiles = listOf(
         "report-book-cover.jrxml",
         "report-summary.jrxml",
+        "report-transaction.jrxml",
         "report-disclaimer.jrxml",
         "book.jrxml",
     )
@@ -76,6 +76,7 @@ class JasperReportService {
             params.loadCommonParameters(data, theme)
             params.loadCover(loadCoverImage(theme), loadCompiledReport("report-book-cover"))
             params.loadSummary(data, loadCompiledReport("report-summary"))
+            params.loadTransactionHistory(data, loadCompiledReport("report-transaction"))
 
             params["DISCLAIMER_REPORT"] = loadCompiledReport("report-disclaimer")
 
@@ -132,4 +133,11 @@ fun HashMap<String, Any>.loadSummary(data: ReportData, summaryReport: JasperRepo
     )
 
     this["SUMMARY_CHART_DATASET"] = dataSource
+}
+
+fun HashMap<String, Any>.loadTransactionHistory(data: ReportData, transactionReport: JasperReport) {
+    this["TRANSACTION_REPORT"] = transactionReport
+    this["TRANSACTION_HISTORY_DATASET"] = JRBeanCollectionDataSource(
+        data.transactionJournals
+    )
 }

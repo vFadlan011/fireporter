@@ -5,6 +5,8 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import java.math.BigDecimal
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
 
 class ReportUtilsTest : StringSpec({
     // formatCurrency
@@ -15,18 +17,6 @@ class ReportUtilsTest : StringSpec({
     "should format currency with 0 decimal places" {
         ReportUtils.formatCurrency("Rp", BigDecimal("1000000"), 0) shouldBe "Rp 1,000,000"
     }
-
-//    "should default null amount to zero" {
-//        ReportUtils.formatCurrency("€", null, 2) shouldBe "€ 0.00"
-//    }
-//
-//    "should default null symbol to empty" {
-//        ReportUtils.formatCurrency(null, 99.99.toBigDecimal(), 2) shouldBe " 99.99"
-//    }
-//
-//    "should default null decimalPlaces to 2" {
-//        ReportUtils.formatCurrency("¥", BigDecimal("42"), null) shouldBe "¥ 42.00"
-//    }
 
     "should format with 3 decimals" {
         ReportUtils.formatCurrency("¢", 56.78.toBigDecimal(), 3) shouldBe "¢ 56.780"
@@ -50,6 +40,41 @@ class ReportUtilsTest : StringSpec({
     "should format single-digit day and month correctly" {
         val date = LocalDate.of(2021, 1, 5)
         ReportUtils.formatDate(date) shouldBe "5 January 2021"
+    }
+
+    // formatTime
+    "should format LocalDateTime to full English date" {
+        val dateTime = LocalDateTime.of(LocalDate.of(2022, 5, 1), LocalTime.of(20, 15, 0))
+        ReportUtils.formatTime(dateTime.toLocalTime()) shouldBe "20:15"
+    }
+
+    "should return an empty string for null input" {
+        ReportUtils.formatTime(null) shouldBe ""
+    }
+
+    "should format a typical time correctly" {
+        val time = LocalTime.of(14, 30, 15) // 2:30:15 PM
+        ReportUtils.formatTime(time) shouldBe "14:30"
+    }
+
+    "should handle midnight (00:00:00) as 24:00:00 due to 'kk' pattern" {
+        val time = LocalTime.of(0, 0, 0)
+        ReportUtils.formatTime(time) shouldBe "24:00"
+    }
+
+    "should handle 12 PM (noon) correctly" {
+        val time = LocalTime.of(12, 0, 0)
+        ReportUtils.formatTime(time) shouldBe "12:00"
+    }
+
+    "should handle times just before midnight (23:59:59) correctly" {
+        val time = LocalTime.of(23, 59, 59)
+        ReportUtils.formatTime(time) shouldBe "23:59"
+    }
+
+    "should handle single digit hour/minute/second with leading zeros" {
+        val time = LocalTime.of(5, 7, 9)
+        ReportUtils.formatTime(time) shouldBe "05:07"
     }
 
     // getPeriod

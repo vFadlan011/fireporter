@@ -4,6 +4,7 @@ import com.fadlan.fireporter.model.DateRangeBoundaries
 import java.math.BigDecimal
 import java.text.DecimalFormat
 import java.time.LocalDate
+import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
 class ReportUtils {
@@ -31,6 +32,13 @@ class ReportUtils {
             if (date == null) return ""
 
             return date.format(DateTimeFormatter.ofPattern("d MMMM yyyy"))
+        }
+
+        @JvmStatic
+        fun formatTime(time: LocalTime?): String {
+            if (time == null) return ""
+
+            return time.format(DateTimeFormatter.ofPattern("kk:mm"))
         }
 
         @JvmStatic
