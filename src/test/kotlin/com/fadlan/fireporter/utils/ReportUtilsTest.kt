@@ -30,7 +30,7 @@ class ReportUtilsTest : StringSpec({
     // formatDate
     "should format LocalDate to full English date" {
         val date = LocalDate.of(2023, 6, 18)
-        ReportUtils.formatDate(date) shouldBe "18 June 2023"
+        ReportUtils.formatDate(date) shouldBe "18 Jun 2023"
     }
 
     "should return empty string for null date" {
@@ -39,7 +39,7 @@ class ReportUtilsTest : StringSpec({
 
     "should format single-digit day and month correctly" {
         val date = LocalDate.of(2021, 1, 5)
-        ReportUtils.formatDate(date) shouldBe "5 January 2021"
+        ReportUtils.formatDate(date) shouldBe "5 Jan 2021"
     }
 
     // formatTime
@@ -85,7 +85,7 @@ class ReportUtilsTest : StringSpec({
             "Q1",
             2023
         )
-        ReportUtils.getPeriod(range) shouldBe "Q1 2023 (1 January 2023—31 March 2023)"
+        ReportUtils.getPeriod(range) shouldBe "Q1 2023 (1 Jan 2023—31 Mar 2023)"
     }
 
     "should return formatted string for H2" {
@@ -95,7 +95,7 @@ class ReportUtilsTest : StringSpec({
             "H2",
             2022
         )
-        ReportUtils.getPeriod(range) shouldBe "H2 2022 (1 July 2022—31 December 2022)"
+        ReportUtils.getPeriod(range) shouldBe "H2 2022 (1 Jul 2022—31 Dec 2022)"
     }
 
     "should return simple string for single month period" {

@@ -55,8 +55,8 @@
 							<dataSourceExpression><![CDATA[$P{TRANSACTION_HISTORY_DATASET}]]></dataSourceExpression>
 						</datasetRun>
 						<contents height="40" width="770">
-							<element kind="textField" uuid="40482f68-648f-42df-9e26-40f937d8a954" x="0" y="0" width="80" height="40" markup="html" fontName="Roboto" linkType="None" linkTarget="Self" vTextAlign="Middle">
-								<paragraph leftIndent="8"/>
+							<element kind="textField" uuid="40482f68-648f-42df-9e26-40f937d8a954" x="0" y="0" width="80" height="40" markup="html" fontName="Roboto" linkType="None" linkTarget="Self" vTextAlign="Middle" hTextAlign="Right">
+								<paragraph rightIndent="8"/>
 								<expression><![CDATA[com.fadlan.fireporter.utils.ReportUtils.formatDate($F{datetime}.toLocalDate()) + "\n" + com.fadlan.fireporter.utils.ReportUtils.formatTime($F{datetime}.toLocalTime())]]></expression>
 								<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 							</element>
@@ -140,20 +140,20 @@
 			<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 			<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
 		</element>
-		<element kind="staticText" uuid="1500ec1d-05bc-4a12-84fb-a7503c7c423e" mode="Opaque" x="480" y="0" width="120" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Roboto" fontSize="10.0" bold="false" italic="false" hTextAlign="Left" vTextAlign="Middle">
-			<paragraph leftIndent="8"/>
+		<element kind="staticText" uuid="1500ec1d-05bc-4a12-84fb-a7503c7c423e" mode="Opaque" x="480" y="0" width="120" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Roboto" fontSize="10.0" bold="false" italic="false" hTextAlign="Right" vTextAlign="Middle">
+			<paragraph rightIndent="8"/>
 			<text><![CDATA[Amount]]></text>
 			<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 			<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
 		</element>
-		<element kind="staticText" uuid="d6775780-7a2d-4c85-8c32-863daa3a7b02" mode="Opaque" x="600" y="0" width="120" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Roboto" fontSize="10.0" bold="false" italic="false" hTextAlign="Left" vTextAlign="Middle">
-			<paragraph leftIndent="8"/>
+		<element kind="staticText" uuid="d6775780-7a2d-4c85-8c32-863daa3a7b02" mode="Opaque" x="600" y="0" width="120" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Roboto" fontSize="10.0" bold="false" italic="false" hTextAlign="Right" vTextAlign="Middle">
+			<paragraph rightIndent="8"/>
 			<text><![CDATA[Balance Left]]></text>
 			<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 			<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
 		</element>
-		<element kind="staticText" uuid="37c0c9ac-8310-4ff5-befe-b7634913923d" mode="Opaque" x="0" y="0" width="80" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Roboto" fontSize="10.0" bold="false" italic="false" hTextAlign="Left" vTextAlign="Middle">
-			<paragraph leftIndent="8"/>
+		<element kind="staticText" uuid="37c0c9ac-8310-4ff5-befe-b7634913923d" mode="Opaque" x="0" y="0" width="80" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Roboto" fontSize="10.0" bold="false" italic="false" hTextAlign="Right" vTextAlign="Middle">
+			<paragraph rightIndent="8"/>
 			<text><![CDATA[Date & Time]]></text>
 			<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 			<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>

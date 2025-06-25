@@ -31,7 +31,7 @@ class ReportUtils {
         fun formatDate(date: LocalDate?): String {
             if (date == null) return ""
 
-            return date.format(DateTimeFormatter.ofPattern("d MMMM yyyy"))
+            return date.format(DateTimeFormatter.ofPattern("d MMM yyyy"))
         }
 
         @JvmStatic
