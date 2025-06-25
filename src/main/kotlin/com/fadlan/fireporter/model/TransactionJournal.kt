@@ -1,12 +1,12 @@
 package com.fadlan.fireporter.model
 
 import java.math.BigDecimal
-import java.time.LocalDateTime
+import java.time.ZonedDateTime
 
 data class TransactionJournal(
     val transactionJournalId: String,
     val type: String,
-    val datetime: LocalDateTime,
+    val datetime: ZonedDateTime,
     val order: Int,
 
     val currencyCode: String,
@@ -39,5 +39,6 @@ data class TransactionJournal(
 
     val balanceLeft: BigDecimal?=null,
 
-    var elementId: String?=null
+    var elementId: String?=null,
+    var firstAttachmentElementId: String?=null
 )
