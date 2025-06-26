@@ -92,6 +92,7 @@
 								<paragraph leftIndent="8"/>
 								<expression><![CDATA["View"]]></expression>
 								<anchorNameExpression><![CDATA[$F{elementId}]]></anchorNameExpression>
+								<printWhenExpression><![CDATA[$F{hasAttachments}]]></printWhenExpression>
 								<hyperlinkWhenExpression><![CDATA[$F{hasAttachments}]]></hyperlinkWhenExpression>
 								<hyperlinkAnchorExpression><![CDATA[$F{firstAttachmentElementId}]]></hyperlinkAnchorExpression>
 							</element>
@@ -103,14 +104,14 @@
 		</groupHeader>
 	</group>
 	<title height="60" splitType="Stretch">
-		<element kind="staticText" uuid="ad00681d-cda2-416d-84e2-1f354ad00e81" mode="Transparent" x="50" y="0" width="240" height="40" forecolor="#030303" backcolor="#AB3A38" fontName="Montserrat" fontSize="22.0" bold="false" italic="false" hTextAlign="Left" vTextAlign="Middle">
+		<element kind="staticText" uuid="ad00681d-cda2-416d-84e2-1f354ad00e81" x="50" y="0" width="240" height="40" fontName="Montserrat" fontSize="22.0" bold="false" italic="false" hTextAlign="Left" vTextAlign="Middle">
 			<paragraph leftIndent="8"/>
 			<text><![CDATA[Transaction History]]></text>
 			<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
-			<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
+			<propertyExpression name="net.sf.jasperreports.style.forecolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
 		</element>
 		<element kind="staticText" uuid="f88af4e1-bb17-4370-b61d-f0394fcacacf" mode="Opaque" x="0" y="0" width="40" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Montserrat" fontSize="22.0" bold="false" italic="false" hTextAlign="Center" vTextAlign="Middle">
-			<text><![CDATA[3]]></text>
+			<text><![CDATA[2]]></text>
 			<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
 		</element>
 		<property name="com.jaspersoft.studio.unit.height" value="px"/>

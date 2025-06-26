@@ -27,6 +27,7 @@ class JasperReportService {
         "report-book-cover.jrxml",
         "report-summary.jrxml",
         "report-transaction.jrxml",
+        "report-attachment.jrxml",
         "report-disclaimer.jrxml",
         "book.jrxml",
     )
@@ -77,6 +78,7 @@ class JasperReportService {
             params.loadCover(loadCoverImage(theme), loadCompiledReport("report-book-cover"))
             params.loadSummary(data, loadCompiledReport("report-summary"))
             params.loadTransactionHistory(data, loadCompiledReport("report-transaction"))
+            params.loadAttachments(data, loadCompiledReport("report-attachment"))
 
             params["DISCLAIMER_REPORT"] = loadCompiledReport("report-disclaimer")
 
@@ -139,5 +141,12 @@ fun HashMap<String, Any>.loadTransactionHistory(data: ReportData, transactionRep
     this["TRANSACTION_REPORT"] = transactionReport
     this["TRANSACTION_HISTORY_DATASET"] = JRBeanCollectionDataSource(
         data.transactionJournals
+    )
+}
+
+fun HashMap<String, Any>.loadAttachments(data: ReportData, attachmentReport: JasperReport) {
+    this["ATTACHMENT_REPORT"] = attachmentReport
+    this["ATTACHMENT_DATASET"] = JRBeanCollectionDataSource(
+        data.downloadedAttachments
     )
 }

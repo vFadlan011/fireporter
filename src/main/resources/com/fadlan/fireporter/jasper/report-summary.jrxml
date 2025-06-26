@@ -321,7 +321,9 @@
 	<background splitType="Stretch"/>
 	<title height="40" splitType="Stretch">
 		<element kind="staticText" uuid="ad00681d-cda2-416d-84e2-1f354ad00e81" x="50" y="0" width="130" height="40" fontName="Montserrat" fontSize="22.0" italic="false" bold="false" hTextAlign="Left" vTextAlign="Middle">
+			<paragraph leftIndent="8"/>
 			<text><![CDATA[Summary]]></text>
+			<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 			<propertyExpression name="net.sf.jasperreports.style.forecolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
 		</element>
 		<element kind="staticText" uuid="f88af4e1-bb17-4370-b61d-f0394fcacacf" mode="Opaque" x="0" y="0" width="40" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Montserrat" fontSize="22.0" italic="false" bold="false" hTextAlign="Center" vTextAlign="Middle">
