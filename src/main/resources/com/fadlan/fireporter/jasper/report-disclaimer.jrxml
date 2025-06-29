@@ -7,9 +7,13 @@
 	<parameter name="GENERAL_OVERVIEW" class="com.fadlan.fireporter.model.GeneralOverview"/>
 	<parameter name="DATE_RANGE" class="com.fadlan.fireporter.model.DateRangeBoundaries"/>
 	<parameter name="CURRENCY_CODE" class="java.lang.String"/>
+	<parameter name="FIREPORTER_VERSION" class="java.lang.String"/>
+	<parameter name="FIREFLY_VERSION" class="java.lang.String"/>
+	<parameter name="JAVA_VERSION" class="java.lang.String"/>
+	<parameter name="OS" class="java.lang.String"/>
 	<group name="Disclaimer">
 		<groupHeader>
-			<band height="260">
+			<band height="230">
 				<element kind="staticText" uuid="c20df8eb-dbcb-43a8-b307-0cbb72035141" x="0" y="10" width="40" height="40" fontName="Montserrat" fontSize="14.0" hTextAlign="Center" vTextAlign="Middle">
 					<text><![CDATA[1.]]></text>
 				</element>
@@ -18,35 +22,35 @@
 					<text><![CDATA[This report is automatically generated based on the user’s Firefly III account data for the selected period.]]></text>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</element>
-				<element kind="staticText" uuid="4689cf45-07ff-4fdb-b702-39a5b9c2b33e" x="0" y="60" width="40" height="40" fontName="Montserrat" fontSize="14.0" hTextAlign="Center" vTextAlign="Middle">
+				<element kind="staticText" uuid="4689cf45-07ff-4fdb-b702-39a5b9c2b33e" x="0" y="50" width="40" height="40" fontName="Montserrat" fontSize="14.0" hTextAlign="Center" vTextAlign="Middle">
 					<text><![CDATA[2.]]></text>
 				</element>
-				<element kind="staticText" uuid="ab4d3bc9-47d1-4345-94fb-871ea4b0a0a0" x="50" y="110" width="470" height="40" fontName="Montserrat" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<element kind="staticText" uuid="ab4d3bc9-47d1-4345-94fb-871ea4b0a0a0" x="50" y="90" width="470" height="40" fontName="Montserrat" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
 					<paragraph leftIndent="8"/>
 					<text><![CDATA[This report is not officially signed and should not be considered a certified financial document.]]></text>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</element>
-				<element kind="staticText" uuid="9f73f1ab-f341-4004-86a0-4a39dbdd9e21" x="0" y="110" width="40" height="40" fontName="Montserrat" fontSize="14.0" hTextAlign="Center" vTextAlign="Middle">
+				<element kind="staticText" uuid="9f73f1ab-f341-4004-86a0-4a39dbdd9e21" x="0" y="90" width="40" height="40" fontName="Montserrat" fontSize="14.0" hTextAlign="Center" vTextAlign="Middle">
 					<text><![CDATA[3.]]></text>
 				</element>
-				<element kind="staticText" uuid="4a12f07f-e5d3-40fa-aeba-b435f6940d25" x="50" y="210" width="470" height="40" fontName="Montserrat" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<element kind="staticText" uuid="4a12f07f-e5d3-40fa-aeba-b435f6940d25" x="50" y="170" width="470" height="40" fontName="Montserrat" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
 					<paragraph leftIndent="8"/>
 					<text><![CDATA[The developer of Fireporter is not responsible for any data errors, loss, or damages resulting from the use of this report.]]></text>
 					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</element>
-				<element kind="staticText" uuid="ddfaa217-f761-4152-8d44-c3d72545f4f4" x="0" y="160" width="40" height="40" fontName="Montserrat" fontSize="14.0" hTextAlign="Center" vTextAlign="Middle">
+				<element kind="staticText" uuid="ddfaa217-f761-4152-8d44-c3d72545f4f4" x="0" y="130" width="40" height="40" fontName="Montserrat" fontSize="14.0" hTextAlign="Center" vTextAlign="Middle">
 					<text><![CDATA[4.]]></text>
 				</element>
-				<element kind="staticText" uuid="5b6e61d4-de39-41e4-a1ef-54c9d1010cac" x="50" y="160" width="470" height="40" fontName="Montserrat" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<element kind="staticText" uuid="5b6e61d4-de39-41e4-a1ef-54c9d1010cac" x="50" y="130" width="470" height="40" fontName="Montserrat" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
 					<paragraph leftIndent="8"/>
 					<text><![CDATA[Users are fully responsible for the use and distribution of this report.]]></text>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</element>
-				<element kind="staticText" uuid="260e587c-553b-4415-8428-000d4a4afc75" x="0" y="210" width="40" height="40" fontName="Montserrat" fontSize="14.0" hTextAlign="Center" vTextAlign="Middle">
+				<element kind="staticText" uuid="260e587c-553b-4415-8428-000d4a4afc75" x="0" y="170" width="40" height="40" fontName="Montserrat" fontSize="14.0" hTextAlign="Center" vTextAlign="Middle">
 					<text><![CDATA[5.]]></text>
 				</element>
-				<element kind="staticText" uuid="9207af29-26e2-4193-8586-b06f5fbb61db" x="50" y="60" width="470" height="40" fontName="Montserrat" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+				<element kind="staticText" uuid="9207af29-26e2-4193-8586-b06f5fbb61db" x="50" y="50" width="470" height="40" fontName="Montserrat" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
 					<paragraph leftIndent="8"/>
 					<text><![CDATA[This report is provided "as is", without any guarantees of accuracy, completeness, or fitness for any particular purpose.]]></text>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
@@ -54,14 +58,102 @@
 			</band>
 		</groupHeader>
 	</group>
+	<group name="System Information">
+		<groupHeader>
+			<band height="293">
+				<element kind="staticText" uuid="bf36bddd-4c4c-495e-b786-f01c30c8ec6c" mode="Opaque" x="0" y="0" width="40" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Montserrat" fontSize="22.0" bold="false" italic="false" hTextAlign="Center" vTextAlign="Middle">
+					<text><![CDATA[I]]></text>
+					<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
+				</element>
+				<element kind="staticText" uuid="73c1313f-fa3e-4a80-bdaa-1ccadeb9ae0a" x="50" y="0" width="290" height="40" fontName="Montserrat" fontSize="22.0" bold="false" italic="false" hTextAlign="Left" vTextAlign="Middle">
+					<paragraph leftIndent="8"/>
+					<text><![CDATA[System Information]]></text>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<propertyExpression name="net.sf.jasperreports.style.forecolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
+				</element>
+				<element kind="staticText" uuid="a6dbc00c-c4bd-48c4-b5bc-465f6c723ec4" x="50" y="50" width="170" height="20" fontName="Montserrat" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+					<paragraph leftIndent="8"/>
+					<text><![CDATA[Generated on]]></text>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</element>
+				<element kind="textField" uuid="6e1e7f56-7c5c-4c5d-85ec-1cd3fa4da2e0" x="220" y="50" width="250" height="20" fontName="Jetbrains Mono" hTextAlign="Right" vTextAlign="Middle">
+					<paragraph rightIndent="8"/>
+					<expression><![CDATA[DATEFORMAT(NOW(), "yyyy-MM-dd HH:mm:ss 'GMT'XXX")]]></expression>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</element>
+				<element kind="textField" uuid="ab9d3038-3848-4956-ac8e-8f4eba628f74" x="220" y="70" width="250" height="20" fontName="Jetbrains Mono" hTextAlign="Right" vTextAlign="Middle">
+					<paragraph rightIndent="8"/>
+					<expression><![CDATA[com.fadlan.fireporter.utils.ReportUtils.getPeriod($P{DATE_RANGE})]]></expression>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</element>
+				<element kind="staticText" uuid="a9a46c2a-ef36-4eef-a550-913270533efa" x="50" y="70" width="170" height="20" fontName="Montserrat" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+					<paragraph leftIndent="8"/>
+					<text><![CDATA[Report Period]]></text>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</element>
+				<element kind="staticText" uuid="4667933d-c404-4598-ae30-1091ad8460c3" x="50" y="90" width="170" height="20" fontName="Montserrat" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+					<paragraph leftIndent="8"/>
+					<text><![CDATA[Fireporter Version]]></text>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</element>
+				<element kind="textField" uuid="1293c594-e0b5-45ca-9c68-8d30cc8295b6" x="220" y="90" width="250" height="20" fontName="Jetbrains Mono" hTextAlign="Right" vTextAlign="Middle">
+					<paragraph rightIndent="8"/>
+					<expression><![CDATA[$P{FIREPORTER_VERSION}]]></expression>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</element>
+				<element kind="textField" uuid="3f108682-1aa2-4864-a77f-8af40210ce58" x="220" y="110" width="250" height="20" fontName="Jetbrains Mono" hTextAlign="Right" vTextAlign="Middle">
+					<paragraph rightIndent="8"/>
+					<expression><![CDATA[$P{FIREFLY_VERSION}]]></expression>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</element>
+				<element kind="staticText" uuid="09799139-7a51-411c-b8fa-63508468b19a" x="50" y="110" width="170" height="20" fontName="Montserrat" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+					<paragraph leftIndent="8"/>
+					<text><![CDATA[Firefly III Version]]></text>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</element>
+				<element kind="textField" uuid="5a90b768-8ade-4aad-9a05-39195737f3a9" x="220" y="150" width="250" height="20" fontName="Jetbrains Mono" hTextAlign="Right" vTextAlign="Middle">
+					<paragraph rightIndent="8"/>
+					<expression><![CDATA[$P{JAVA_VERSION}]]></expression>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</element>
+				<element kind="textField" uuid="0ed652c5-5fa3-4a8a-81b0-504b795a7336" x="220" y="130" width="250" height="20" fontName="Jetbrains Mono" hTextAlign="Right" vTextAlign="Middle">
+					<paragraph rightIndent="8"/>
+					<expression><![CDATA[$P{OS}]]></expression>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</element>
+				<element kind="staticText" uuid="1f6c3f24-4092-46b6-afb6-efac0b8b65d8" x="50" y="150" width="170" height="20" fontName="Montserrat" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+					<paragraph leftIndent="8"/>
+					<text><![CDATA[Java Version]]></text>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</element>
+				<element kind="staticText" uuid="77a3c361-ed41-4faa-83e7-c1d15586ef42" x="50" y="130" width="170" height="20" fontName="Montserrat" fontSize="12.0" hTextAlign="Left" vTextAlign="Middle">
+					<paragraph leftIndent="8"/>
+					<text><![CDATA[Operating System]]></text>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</element>
+			</band>
+		</groupHeader>
+	</group>
 	<title height="40" splitType="Stretch">
-		<element kind="staticText" uuid="ad00681d-cda2-416d-84e2-1f354ad00e81" mode="Opaque" x="50" y="0" width="470" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Montserrat" fontSize="22.0" italic="false" bold="false" hTextAlign="Left" vTextAlign="Middle">
+		<element kind="staticText" uuid="ad00681d-cda2-416d-84e2-1f354ad00e81" mode="Opaque" x="50" y="0" width="470" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Montserrat" fontSize="22.0" bold="false" italic="false" hTextAlign="Left" vTextAlign="Middle">
 			<paragraph leftIndent="8"/>
 			<text><![CDATA[Disclaimer]]></text>
 			<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 			<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
 		</element>
-		<element kind="staticText" uuid="f88af4e1-bb17-4370-b61d-f0394fcacacf" mode="Opaque" x="0" y="0" width="40" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Montserrat" fontSize="22.0" italic="false" bold="false" hTextAlign="Center" vTextAlign="Middle">
+		<element kind="staticText" uuid="f88af4e1-bb17-4370-b61d-f0394fcacacf" mode="Opaque" x="0" y="0" width="40" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Montserrat" fontSize="22.0" bold="false" italic="false" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[!]]></text>
 			<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
 		</element>

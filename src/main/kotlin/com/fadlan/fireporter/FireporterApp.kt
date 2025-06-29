@@ -105,7 +105,9 @@ class FireporterApp : Application() {
                     get<SummaryRepository>(),
                     get<InsightRepository>(),
                     get<TransactionRepository>(),
-                    get<AttachmentService>()
+                    get<AttachmentService>(),
+                    get<HttpClient>(),
+                    get<CredentialProvider>()
                 )
             }
 

@@ -59,7 +59,7 @@ class FireporterViewModel(
                 "Report Saved",
                 "Financial Report Generated",
                 "The financial report has been successfully exported as a PDF file."
-            )
+            ).showAndWait()
         } catch (exception: InactiveAccountException) {
             progressTracker.sendMessage(exception.message)
             progressTracker.resetProgress()
@@ -117,14 +117,10 @@ class FireporterViewModel(
         }
 
         try {
-            val response: HttpResponse = ktor.request(host) {
-                url { appendPathSegments("api", "v1", "about") }
-                headers.append(HttpHeaders.Authorization, "Bearer $token")
-                method = HttpMethod.Get
-            }
-            val sysInfo: SystemInfoResponse? = try { response.body<SystemInfoResponse>() } catch (e: Exception) { null }
+            val apiInfo = dataCollectorService.requestApiInfo(host, token)
+            val sysInfo: SystemInfoResponse? = try { apiInfo.body<SystemInfoResponse>() } catch (e: Exception) { null }
 
-            if (response.status == HttpStatusCode.Unauthorized) {
+            if (apiInfo.status == HttpStatusCode.Unauthorized) {
                 IconizedAlert(
                     Alert.AlertType.ERROR,
                     "Unauthorized",

@@ -1,10 +1,18 @@
 package com.fadlan.fireporter.service
 
+import com.fadlan.fireporter.dto.SystemInfoDto
+import com.fadlan.fireporter.dto.SystemInfoResponse
 import com.fadlan.fireporter.model.*
+import com.fadlan.fireporter.network.CredentialProvider
 import com.fadlan.fireporter.repository.*
 import com.fadlan.fireporter.utils.FxProgressTracker
 import com.fadlan.fireporter.utils.exceptions.IllegalDateRangeException
 import com.fadlan.fireporter.utils.exceptions.InactiveAccountException
+import io.ktor.client.*
+import io.ktor.client.call.*
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
+import io.ktor.http.*
 import java.math.BigDecimal
 import kotlin.collections.LinkedHashMap
 
@@ -15,7 +23,9 @@ class DataCollectorService(
     private val summaryRepository: SummaryRepository,
     private val insightRepository: InsightRepository,
     private val transactionRepository: TransactionRepository,
-    private val attachmentService: AttachmentService
+    private val attachmentService: AttachmentService,
+    private val ktor: HttpClient,
+    private val cred: CredentialProvider,
 ) {
     private var currencyCode: String? = null
     private var currencySymbol: String? = null
@@ -28,6 +38,7 @@ class DataCollectorService(
     private lateinit var expenseInsight: MutableList<InsightGroup>
     private lateinit var transactionJournals: MutableList<TransactionJournal>
     private lateinit var downloadedAttachments: MutableList<Attachment>
+    private lateinit var apiSysInfo: SystemInfoResponse
 
     private suspend fun collectData(dateRange: DateRangeBoundaries) {
         progressTracker.report("Collecting accounts and charts data")
@@ -49,6 +60,8 @@ class DataCollectorService(
 
         progressTracker.report("Downloading attachments")
         downloadedAttachments = attachmentService.downloadAttachments(transactionJournals.filter { it.hasAttachments })
+
+        apiSysInfo = requestApiInfo(cred.host, cred.token).body()
     }
 
     private fun setMainCurrency() {
@@ -89,8 +102,18 @@ class DataCollectorService(
             incomeInsight,
             expenseInsight,
             transactionJournals,
-            downloadedAttachments
+            downloadedAttachments,
+            apiSysInfo.data
         )
+    }
+
+    suspend fun requestApiInfo(host: String, token: String): HttpResponse {
+        val response: HttpResponse = ktor.request(host) {
+            url { appendPathSegments("api", "v1", "about") }
+            headers.append(HttpHeaders.Authorization, "Bearer $token")
+            method = HttpMethod.Get
+        }
+        return response
     }
 
     suspend fun printData(dateRange: DateRangeBoundaries) {

@@ -22,6 +22,10 @@
 	<parameter name="ATTACHMENT_REPORT" class="net.sf.jasperreports.engine.JasperReport"/>
 	<parameter name="ATTACHMENT_DATASET" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
 	<parameter name="DISCLAIMER_REPORT" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="FIREPORTER_VERSION" class="java.lang.String"/>
+	<parameter name="FIREFLY_VERSION" class="java.lang.String"/>
+	<parameter name="JAVA_VERSION" class="java.lang.String"/>
+	<parameter name="OS" class="java.lang.String"/>
 	<detail>
 		<part uuid="92934ce7-d1f5-43f5-9f9f-005b31686f81">
 			<component kind="subreportPart">
@@ -150,6 +154,21 @@
 				</parameter>
 				<parameter name="CURRENCY_CODE">
 					<expression><![CDATA[$P{CURRENCY_CODE}]]></expression>
+				</parameter>
+				<parameter name="DATE_RANGE">
+					<expression><![CDATA[$P{DATE_RANGE}]]></expression>
+				</parameter>
+				<parameter name="FIREPORTER_VERSION">
+					<expression><![CDATA[$P{FIREPORTER_VERSION}]]></expression>
+				</parameter>
+				<parameter name="FIREFLY_VERSION">
+					<expression><![CDATA[$P{FIREFLY_VERSION}]]></expression>
+				</parameter>
+				<parameter name="JAVA_VERSION">
+					<expression><![CDATA[$P{JAVA_VERSION}]]></expression>
+				</parameter>
+				<parameter name="OS">
+					<expression><![CDATA[$P{OS}]]></expression>
 				</parameter>
 			</component>
 		</part>

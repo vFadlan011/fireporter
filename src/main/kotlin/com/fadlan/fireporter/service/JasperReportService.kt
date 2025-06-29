@@ -79,6 +79,7 @@ class JasperReportService {
             params.loadSummary(data, loadCompiledReport("report-summary"))
             params.loadTransactionHistory(data, loadCompiledReport("report-transaction"))
             params.loadAttachments(data, loadCompiledReport("report-attachment"))
+            params.loadSysInfo(data)
 
             params["DISCLAIMER_REPORT"] = loadCompiledReport("report-disclaimer")
 
@@ -149,4 +150,17 @@ fun HashMap<String, Any>.loadAttachments(data: ReportData, attachmentReport: Jas
     this["ATTACHMENT_DATASET"] = JRBeanCollectionDataSource(
         data.downloadedAttachments
     )
+}
+
+fun HashMap<String, Any>.loadSysInfo(data: ReportData) {
+    val fireporterVersion: String = object {}.javaClass
+        .getResourceAsStream("/version.properties")
+        ?.use { stream ->
+            java.util.Properties().apply { load(stream) }
+        }?.getProperty("app.version") ?: "Unknown"
+
+    this["FIREPORTER_VERSION"] = fireporterVersion
+    this["FIREFLY_VERSION"] = data.apiSysInfo.version
+    this["JAVA_VERSION"] = System.getProperty("java.version")
+    this["OS"] = System.getProperty("os.name")
 }

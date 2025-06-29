@@ -1,5 +1,6 @@
 package com.fadlan.fireporter.model
 
+import com.fadlan.fireporter.dto.SystemInfoDto
 import java.math.BigDecimal
 
 data class  ReportData(
@@ -14,5 +15,6 @@ data class  ReportData(
     val incomeInsight: MutableList<InsightGroup>,
     val expenseInsight: MutableList<InsightGroup>,
     val transactionJournals: MutableList<TransactionJournal>,
-    val downloadedAttachments: MutableList<Attachment>
+    val downloadedAttachments: MutableList<Attachment>,
+    val apiSysInfo: SystemInfoDto
 )
