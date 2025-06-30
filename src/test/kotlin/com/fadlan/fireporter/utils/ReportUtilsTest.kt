@@ -117,4 +117,26 @@ class ReportUtilsTest : StringSpec({
         )
         ReportUtils.getPeriod(range) shouldBe "All Year 2020"
     }
+
+    "should return full string with date range when endDate is today" {
+        val today = LocalDate.now()
+        val start = today.minusDays(6)
+        val range = DateRangeBoundaries(
+            start,
+            today,
+            "Weekly",
+            today.year
+        )
+        ReportUtils.getPeriod(range) shouldBe "Weekly ${today.year} (${ReportUtils.formatDate(start)}—${ReportUtils.formatDate(today)})"
+    }
+
+    "should return simple string when endDate is not today and period is not Qx or Hx" {
+        val range = DateRangeBoundaries(
+            LocalDate.of(2023, 9, 1),
+            LocalDate.of(2023, 9, 30),
+            "September",
+            2023
+        )
+        ReportUtils.getPeriod(range) shouldBe "September 2023"
+    }
 })

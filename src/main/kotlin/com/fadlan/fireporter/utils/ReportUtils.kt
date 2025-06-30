@@ -43,9 +43,13 @@ class ReportUtils {
 
         @JvmStatic
         fun getPeriod(dateRange: DateRangeBoundaries): String {
-            return when (dateRange.period) {
-                "Q1", "Q2", "Q3", "H1", "H2" -> "${dateRange.period} ${dateRange.year} (${formatDate(dateRange.startDate)}—${formatDate(dateRange.endDate)})"
-                else -> "${dateRange.period} ${dateRange.year}"
+            return if (dateRange.endDate == LocalDate.now()) {
+                "${dateRange.period} ${dateRange.year} (${formatDate(dateRange.startDate)}—${formatDate(dateRange.endDate)})"
+            } else {
+                when (dateRange.period) {
+                    "Q1", "Q2", "Q3", "H1", "H2" -> "${dateRange.period} ${dateRange.year} (${formatDate(dateRange.startDate)}—${formatDate(dateRange.endDate)})"
+                    else -> "${dateRange.period} ${dateRange.year}"
+                }
             }
         }
     }
