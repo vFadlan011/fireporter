@@ -1,7 +1,6 @@
 package com.fadlan.fireporter.repository
 
 import com.fadlan.fireporter.dto.ChartDto
-import com.fadlan.fireporter.model.Account
 import com.fadlan.fireporter.model.DateRangeBoundaries
 import com.fadlan.fireporter.network.CredentialProvider
 import io.ktor.client.*
@@ -9,10 +8,7 @@ import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
-import kotlinx.coroutines.flow.merge
 import java.math.BigDecimal
-import java.util.*
-import kotlin.collections.HashMap
 import kotlin.collections.LinkedHashMap
 
 class ChartRepository(

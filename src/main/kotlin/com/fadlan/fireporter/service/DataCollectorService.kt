@@ -1,6 +1,5 @@
 package com.fadlan.fireporter.service
 
-import com.fadlan.fireporter.dto.SystemInfoDto
 import com.fadlan.fireporter.dto.SystemInfoResponse
 import com.fadlan.fireporter.model.*
 import com.fadlan.fireporter.network.CredentialProvider
