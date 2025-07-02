@@ -1,5 +1,18 @@
 <!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
 <jasperReport name="report-disclaimer" language="java" columnCount="1" pageWidth="595" pageHeight="842" columnWidth="523" leftMargin="36" rightMargin="36" topMargin="36" bottomMargin="36" uuid="c9905cbf-9074-4da4-a3f8-d6b8854cd232">
+	<dataset name="ATTACHMENT_DATASET" uuid="d62a350f-22f4-483f-956c-3c73471be509">
+		<field name="filename" class="java.lang.String"/>
+		<field name="createdAt" class="java.time.ZonedDateTime"/>
+		<field name="updatedAt" class="java.time.ZonedDateTime"/>
+		<field name="elementId" class="java.lang.String"/>
+		<field name="parentId" class="java.lang.String"/>
+		<field name="imageFiles" class="java.util.List"/>
+		<field name="size" class="java.lang.Integer"/>
+		<field name="parentDescription" class="java.lang.String"/>
+	</dataset>
+	<dataset name="ATTACHMENT_IMAGES_DATASET" uuid="6d241704-c078-46e1-8df3-7bf9a3561140">
+		<field name="image" class="java.awt.image.BufferedImage"/>
+	</dataset>
 	<parameter name="THEME_DARK_COLOR" class="java.lang.String"/>
 	<parameter name="THEME_COLOR" class="java.lang.String"/>
 	<parameter name="CURRENCY_SYMBOL" class="java.lang.String"/>
@@ -7,14 +20,63 @@
 	<parameter name="GENERAL_OVERVIEW" class="com.fadlan.fireporter.model.GeneralOverview"/>
 	<parameter name="DATE_RANGE" class="com.fadlan.fireporter.model.DateRangeBoundaries"/>
 	<parameter name="CURRENCY_CODE" class="java.lang.String"/>
+	<parameter name="ATTACHMENT_DATASET" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<group name="Attachment">
+		<groupHeader>
+			<band height="690">
+				<element kind="component" uuid="02115c11-94c9-4b5a-b108-4f5a6a79792e" x="0" y="20" width="520" height="670">
+					<component kind="list">
+						<datasetRun uuid="6f1611b2-42b6-4551-b510-bdbb04f750f1" subDataset="ATTACHMENT_DATASET">
+							<dataSourceExpression><![CDATA[$P{ATTACHMENT_DATASET}]]></dataSourceExpression>
+						</datasetRun>
+						<contents height="670" width="520">
+							<element kind="textField" uuid="94570bf3-e6e4-4e33-ae97-6e9e16fc9fbe" x="20" y="0" width="360" height="30" fontName="Roboto" fontSize="14.0" linkType="None" linkTarget="Self" vTextAlign="Middle">
+								<expression><![CDATA[$F{parentDescription}]]></expression>
+								<anchorNameExpression><![CDATA[$F{elementId}]]></anchorNameExpression>
+							</element>
+							<element kind="textField" uuid="683ca696-7ab3-4371-8e8f-b717515df6a6" x="20" y="30" width="360" height="20" fontName="Jetbrains Mono" fontSize="10.0" linkType="None" linkTarget="Self" vTextAlign="Middle">
+								<expression><![CDATA[$F{filename}]]></expression>
+								<anchorNameExpression><![CDATA[$F{elementId}]]></anchorNameExpression>
+							</element>
+							<element kind="textField" uuid="efbf5e89-96a0-44b0-80ee-ca9e81bd1e85" x="20" y="50" width="360" height="20" fontName="Jetbrains Mono" fontSize="10.0" vTextAlign="Middle">
+								<expression><![CDATA[$F{updatedAt}.toString() + " | " + com.fadlan.fireporter.utils.ReportUtils.formatScientific($F{size}, "B")]]></expression>
+							</element>
+							<element kind="textField" uuid="dc6ef7e8-145c-4a1c-90ef-1a2387d349ee" x="400" y="0" width="100" height="70" fontName="Roboto" linkType="LocalAnchor" linkTarget="Self" hTextAlign="Center" vTextAlign="Middle">
+								<expression><![CDATA["Back to Transaction"]]></expression>
+								<hyperlinkAnchorExpression><![CDATA[$F{parentId}]]></hyperlinkAnchorExpression>
+							</element>
+							<element kind="component" uuid="496379d0-879e-4139-ae7a-3565327545d4" x="20" y="85" width="480" height="570">
+								<component kind="list">
+									<datasetRun uuid="d3eccf38-f7be-4ce9-ae34-dfbdccb6fe92" subDataset="ATTACHMENT_IMAGES_DATASET">
+										<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{imageFiles})]]></dataSourceExpression>
+									</datasetRun>
+									<contents height="570" width="480">
+										<element kind="image" uuid="e14a46b2-17ac-4d4c-bbf1-c3b66261a695" x="0" y="0" width="480" height="570" linkType="None" linkTarget="Self" hImageAlign="Center" vImageAlign="Middle">
+											<expression><![CDATA[$F{image}]]></expression>
+										</element>
+									</contents>
+								</component>
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								<property name="com.jaspersoft.studio.unit.y" value="px"/>
+							</element>
+							<element kind="line" uuid="d718ecc8-2f51-4366-8dc4-2eb0f3d204b1" x="390" y="0" width="1" height="70">
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							</element>
+						</contents>
+					</component>
+				</element>
+			</band>
+		</groupHeader>
+	</group>
 	<title height="40" splitType="Stretch">
-		<element kind="staticText" uuid="ad00681d-cda2-416d-84e2-1f354ad00e81" x="50" y="0" width="470" height="40" fontName="Montserrat" fontSize="22.0" italic="false" bold="false" hTextAlign="Left" vTextAlign="Middle">
+		<element kind="staticText" uuid="ad00681d-cda2-416d-84e2-1f354ad00e81" x="50" y="0" width="470" height="40" fontName="Montserrat" fontSize="22.0" bold="false" italic="false" hTextAlign="Left" vTextAlign="Middle">
 			<paragraph leftIndent="8"/>
 			<text><![CDATA[Attachment]]></text>
 			<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 			<propertyExpression name="net.sf.jasperreports.style.forecolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
 		</element>
-		<element kind="staticText" uuid="f88af4e1-bb17-4370-b61d-f0394fcacacf" mode="Opaque" x="0" y="0" width="40" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Montserrat" fontSize="22.0" italic="false" bold="false" hTextAlign="Center" vTextAlign="Middle">
+		<element kind="staticText" uuid="f88af4e1-bb17-4370-b61d-f0394fcacacf" mode="Opaque" x="0" y="0" width="40" height="40" forecolor="#FFFFFF" backcolor="#AB3A38" fontName="Montserrat" fontSize="22.0" bold="false" italic="false" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[3]]></text>
 			<propertyExpression name="net.sf.jasperreports.style.backcolor"><![CDATA[$P{THEME_DARK_COLOR}]]></propertyExpression>
 		</element>

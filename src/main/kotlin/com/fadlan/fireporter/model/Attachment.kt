@@ -1,14 +1,15 @@
 package com.fadlan.fireporter.model
 
+import java.awt.image.BufferedImage
 import java.io.File
-import java.time.LocalDateTime
+import java.time.ZonedDateTime
 
 data class Attachment(
     val type: String,
     val id: String,
 
-    val createdAt: LocalDateTime,
-    val updatedAt: LocalDateTime,
+    val createdAt: ZonedDateTime,
+    val updatedAt: ZonedDateTime,
 
     val attachableId: String,
     val attachableType: String,
@@ -26,8 +27,13 @@ data class Attachment(
     val mime: String,
     val size: Int,
     var file: File?=null,
-    var imageFiles: MutableList<File>,
+    var imageFiles: List<AttachmentImage>,
 
     var elementId: String?=null,
-    var parentId: String?=null
+    var parentId: String?=null,
+    var parentDescription: String=""
+)
+
+data class AttachmentImage(
+    val image: BufferedImage,
 )

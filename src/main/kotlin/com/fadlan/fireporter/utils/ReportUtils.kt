@@ -52,5 +52,22 @@ class ReportUtils {
                 }
             }
         }
+
+        @JvmStatic
+        fun formatScientific(value: Int, unit: String = ""): String {
+            if (value < 1000) return "$value $unit".trim()
+
+            val suffixes = listOf("", "K", "M", "G")
+            var scaledValue = value.toDouble()
+            var exponent = 0
+
+            while (scaledValue >= 1000 && exponent < suffixes.size - 1) {
+                scaledValue /= 1000
+                exponent++
+            }
+
+            val rounded = if (scaledValue % 1.0 == 0.0) scaledValue.toInt() else "%.1f".format(scaledValue)
+            return "$rounded ${suffixes[exponent]}$unit".trim()
+        }
     }
 }

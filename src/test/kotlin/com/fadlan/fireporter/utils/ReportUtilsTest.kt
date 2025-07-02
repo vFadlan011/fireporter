@@ -139,4 +139,33 @@ class ReportUtilsTest : StringSpec({
         )
         ReportUtils.getPeriod(range) shouldBe "September 2023"
     }
+
+    // formatScientific
+    "should format numbers less than 1000 without suffix" {
+        ReportUtils.formatScientific(999, "B") shouldBe "999 B"
+    }
+
+    "should format 1000 as 1 K" {
+        ReportUtils.formatScientific(1000, "B") shouldBe "1 KB"
+    }
+
+    "should format 1 million as 1 M" {
+        ReportUtils.formatScientific(1000000, "B") shouldBe "1 MB"
+    }
+
+    "should format 1.5 million as 1.5 M" {
+        ReportUtils.formatScientific(1500000, "B") shouldBe "1.5 MB"
+    }
+
+    "should format 1 billion as 1 G" {
+        ReportUtils.formatScientific(1000000000, "B") shouldBe "1 GB"
+    }
+
+    "should format without unit" {
+        ReportUtils.formatScientific(1_000) shouldBe "1 K"
+    }
+
+    "should round non-integer properly" {
+        ReportUtils.formatScientific(1_234_567, "B") shouldBe "1.2 MB"
+    }
 })

@@ -106,6 +106,7 @@ class TransactionRepository(
                     if (attachment.attachableId == journal.transactionJournalId) {
                         attachment.elementId = "$journalElementId-${attachment.id}"
                         attachment.parentId = journalElementId
+                        attachment.parentDescription = journal.description
 
                         journalAttachment += attachment
                         if (firstAttachmentElementId.isNullOrBlank()) firstAttachmentElementId = attachment.elementId

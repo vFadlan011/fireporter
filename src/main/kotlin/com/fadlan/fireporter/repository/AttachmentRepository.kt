@@ -9,7 +9,7 @@ import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
-import java.time.LocalDateTime
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 class AttachmentRepository(
@@ -53,8 +53,8 @@ class AttachmentRepository(
             attachments += Attachment(
                 attachment.type,
                 attachment.id,
-                LocalDateTime.parse(attachment.attributes.createdAt, textDateFormat),
-                LocalDateTime.parse(attachment.attributes.updatedAt, textDateFormat),
+                ZonedDateTime.parse(attachment.attributes.createdAt, textDateFormat),
+                ZonedDateTime.parse(attachment.attributes.updatedAt, textDateFormat),
                 attachment.attributes.attachableId,
                 attachment.attributes.attachableType,
                 attachment.attributes.md5,
