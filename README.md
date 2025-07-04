@@ -16,6 +16,12 @@ Fireporter is a third-party app for Firefly III, it uses Firefly's API to downlo
 3. Choose the period you want to report. 
 4. Click `Generate` to create the PDF.
 
+## TODO
+
+1. Build to executable for distribution
+2. Toggle attachments
+3. Multi-currency support (Major Update)
+
 ## Important Notes
 - Currently, supports only Indonesian Rupiah (IDR). Multi-currency support is planned.
 - Tested only on Windows 10. Should work on Linux and macOS, but compatibility isn't guaranteed.
