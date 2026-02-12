@@ -58,6 +58,8 @@ class AccountRepository(
             if (attr.openingBalance == null) attr.openingBalance = "0.00"
             accounts.add(
                 Account(
+                    attr.createdAt,
+                    attr.updatedAt,
                     account.id,
                     attr.name,
                     attr.type,
@@ -82,13 +84,11 @@ class AccountRepository(
         var result = false
 
         for (account in accounts) {
-            val openingBalanceDateStr = account.openingBalanceDate
-            if (openingBalanceDateStr != null) {
-                val openingDate = openingBalanceDateStr.let { LocalDate.parse(it, textDateFormat) }
-                if (openingDate.isBefore(dateRange.startDate) || openingDate.isBefore(dateRange.endDate)) {
-                    result = true
-                    break
-                }
+            val creationDateStr = account.createdAt
+            val creationDate = creationDateStr.let { LocalDate.parse(it, textDateFormat) }
+            if (creationDate.isBefore(dateRange.startDate) || creationDate.isBefore(dateRange.endDate)) {
+                result = true
+                break
             }
         }
 

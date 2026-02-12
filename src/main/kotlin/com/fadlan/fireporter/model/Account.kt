@@ -1,9 +1,12 @@
 package com.fadlan.fireporter.model
 
+import kotlinx.serialization.SerialName
 import java.math.BigDecimal
 import java.time.LocalDate
 
 data class Account(
+    val createdAt: String,
+    val updatedAt: String,
     val id: String,
     val name: String,
     val type: String,

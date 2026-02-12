@@ -24,7 +24,7 @@ Fireporter does not offer pre-built binaries for MacOS old architecture. You mus
 
 
 ## ⚠️ Important Notes
-- Currently, supports any currency but not multiple currencies. E.g. you can only have one currency in your Firefly III adminstration.
+- Currently, supports any currency but not multiple currencies. E.g. you can only have one currency in your Firefly III administration.
 - Release are available for `Windows x64`, `Linux x64`, and `MacOS (Apple Silicon)`. But only Windows version that has been tested.
 - Fireporter only reads data from Firefly III via API and formats it into a PDF.
 - Tips: Store attachments as image instead of pdf for faster process. Fireporter will have to convert entire pages of PDF file to multiple image files before attaching it to generated report.
@@ -36,6 +36,9 @@ Fireporter is provided "as is", without warranty of any kind. The developer is n
 This project is licensed under the [GNU AGPL v3.0](LICENSE).
 
 ## 📌 Changelog
+### 2.0.11 - 2026/02/12
+- (FIX) Check account inactivity based on `createdAt` date instead of `openingBalanceDate`.
+
 ### 2.0.10 - 2025/12/13
 - (FIX) - Fix icon on linux installers (.deb and .rpm)
 
